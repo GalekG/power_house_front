@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { API_URL } from '../consts';
+import { ALLOW_NEW_USER_REGISTRATION } from '../consts';
 import '../estilos/LoginForm.css';
+import {LoginService} from '../services/loginService';
+import { Link, useNavigate } from 'react-router-dom';
+import { checkIfUserIsLogged } from '../services/checkIfIsLogged';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [user, setUser] = useState(null); // Agrega un estado para el usuario autenticado
+  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -25,29 +26,19 @@ function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    const loginService = new LoginService()
     // Aquí puedes agregar la lógica de autenticación
-    const credentials = {
+    loginService.run({
       username,
       password
-    };
-
-    axios.post(`${API_URL}/auth/login`, credentials)
-      .then((res) => {
-        const token = res.data.token;
-
-        localStorage.setItem('token', token);
-
-        // Almacena el usuario autenticado en el estado
-        setUser(credentials.username);
-
-        // Redirige al usuario a "/presentacion"
+    }).then((_res) => {
+      if (checkIfUserIsLogged()){
+        setUser(localStorage.getItem('user'));
         navigate('/');
         window.location.reload(false);
-      })
-      .catch((error) => {
-        setErrorMessage(error.response?.data); // Muestra el mensaje de error
-      });
+      }
+      
+    }).catch((e) => setErrorMessage(e.response?.data));
   }
 
   return (
@@ -85,7 +76,12 @@ function LoginForm() {
               </tr>
             </tbody>
           </table>
-          <button type="submit" className="login-button">Iniciar sesión</button>
+          <div className='login-buttons-group'>
+            <button type="submit" className="signin-button">Iniciar sesión</button>
+            {ALLOW_NEW_USER_REGISTRATION && (
+              <Link to="/users/create" className='create-button'>Registrar nuevo usuario</Link> 
+            )}
+          </div>
         </form>
         {errorMessage && (
           <p className="error-message">Error: {errorMessage.error}</p>
