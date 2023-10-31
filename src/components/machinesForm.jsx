@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { API_URL } from '../consts';
+import axios from '../utils/axios.js'
 
-function MachinesForm({setMachines}) {
+function MachinesForm({ setMachines }) {
   const [machine, setMachine] = useState({
     name: '',
     description: '',
     muscleGroup: '',
-    quantity: 0,
+    quantity: 1,
   });
   const [image, setImage] = useState(null);
 
@@ -64,6 +64,7 @@ function MachinesForm({setMachines}) {
         <input
           type="file"
           name="image"
+          accept="image/*"
           onChange={handleFileChange}
         />
         <textarea

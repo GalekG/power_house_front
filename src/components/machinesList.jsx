@@ -1,4 +1,17 @@
-function MachinesList ({ machines, handleDeleteMachine }) {
+import { API_URL } from '../consts';
+import axios from '../utils/axios';
+
+function MachinesList ({ machines, setMachines }) {
+  const handleDeleteMachine = (machineId) => {
+    axios
+      .delete(`${API_URL}/machines/${machineId}/delete/`)
+      .then(() => {
+        setMachines((prevMachines) =>
+          prevMachines.filter((machine) => machine.id !== machineId)
+        );
+      })
+      .catch((e) => console.error(e));
+  };
   return (
     <div>
       {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axios';
 import { API_URL } from '../consts';
 
 function LoginForm() {
@@ -8,7 +8,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [user, setUser] = useState(null); // Agrega un estado para el usuario autenticado
+  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
