@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../consts';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -30,7 +31,7 @@ function LoginForm() {
       password
     };
 
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, credentials)
+    axios.post(`${API_URL}/auth/login`, credentials)
       .then((res) => {
         const token = res.data.token;
 
