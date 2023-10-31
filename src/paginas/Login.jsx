@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../utils/axios';
+import axios from 'axios';
 import { API_URL } from '../consts';
+import '../estilos/LoginForm.css';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // Agrega un estado para el usuario autenticado
 
   const navigate = useNavigate();
 
@@ -42,41 +43,57 @@ function LoginForm() {
 
         // Redirige al usuario a "/presentacion"
         navigate('/');
+        window.location.reload(false);
       })
       .catch((error) => {
-        setErrorMessage(error.response.data); // Muestra el mensaje de error
+        setErrorMessage(error.response?.data); // Muestra el mensaje de error
       });
   }
 
   return (
-    <div>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Usuario:</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Iniciar sesión</button>
-      </form>
-      {errorMessage && (
-        <p className="error-message">Error: {errorMessage.error}</p>
-      )}
-      {user && <p>Bienvenido, {user}.</p>}
+    <div className="container">
+      <div className="login-box">
+        <h2>Iniciar sesión</h2>
+        <form onSubmit={handleSubmit}>
+          <table>
+            <tbody>
+              <tr>
+                <td className="tableLogin-label">
+                  <label>Usuario:</label>
+                </td>
+                <td>
+                  <input
+                      type="text"
+                      name="username"
+                      value={username}
+                      onChange={handleInputChange}
+                    />
+                </td>
+              </tr>
+              <tr>
+                <td className="tableLogin-label">
+                  <label>Contraseña:</label>
+                </td>
+                <td>
+                  <input
+                      type="password"
+                      name="password"
+                      value={password}
+                      onChange={handleInputChange}
+                    />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" className="login-button">Iniciar sesión</button>
+        </form>
+        {errorMessage && (
+          <p className="error-message">Error: {errorMessage.error}</p>
+        )}
+        {user && <p>Bienvenido, {user}.</p>}
+      </div>
     </div>
+    
   );
 }
 

@@ -1,0 +1,72 @@
+
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+input {
+  font-size: 16px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-button {
+  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  font-size: 16px;
+  color: #ff0000;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.success-message {
+  font-size: 16px;
+  color: #008000;
+  margin-top: 20px;
+  text-align: center;
+}
+.login-box { /* Nueva clase para el marco */
+  border: solid 1px black;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.container {
+  height: 80vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tableLogin-label {
+  padding-right: 15px;
+}
