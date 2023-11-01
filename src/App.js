@@ -6,6 +6,7 @@ import Inventory from "./paginas/Inventory";
 import Layout from "./Layout";
 import Users from "./paginas/Users";
 import UserCreation from "./paginas/UserCreation";
+import Client from "./paginas/Client";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/create" element={<UserCreation />} />
+          <Route path="/client/:identification" element={<Client />} />
         </Routes>
       </BrowserRouter>
     </div>
