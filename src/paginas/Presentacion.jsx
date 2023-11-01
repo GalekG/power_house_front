@@ -8,6 +8,12 @@ const Presentacion = () => {
     <div className="presentacion-container">
       <div className="header">
       </div>
+      {/* <div>
+        <h2 className="user-main">Bienvenido {user.people.names}</h2>
+        {user?.people?.image && (
+          <img src={user.people.image} alt={user.people.names} width={150}/>
+        )}
+      </div> */}
       <section className="main-section">
         <h1 className="titulo">BIENVENIDO A GIMNASIO POWER HOUSE</h1>
         <h1 className="subtitulo">Tu destino para una vida más saludable y activa</h1>

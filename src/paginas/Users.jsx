@@ -123,7 +123,7 @@ function Users() {
                     )}
                     <td>
                         <button onClick={() => toggleModalUpdate(user)} disabled={userLogged && userLogged.id === user.id}>Editar</button>
-                        <button onClick={toggleDelete} disabled={userLogged && userLogged.id === user.id}>Eliminar</button>
+                        <button onClick={() => toggleDelete(user.id)} disabled={userLogged && userLogged.id === user.id}>Eliminar</button>
                         
                       
                       
