@@ -39,7 +39,7 @@ const Presentacion = () => {
       </section>
 
       <form onSubmit={handleSubmit}>
-        <label for="identification_id">Ingrese su identificación para consultar:</label>
+        <label htmlFor="identification_id">Ingrese su identificación para consultar:</label>
         <input
           type="text"
           name="identification"

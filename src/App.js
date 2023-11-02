@@ -7,6 +7,7 @@ import Layout from "./Layout";
 import Users from "./paginas/Users";
 import UserCreation from "./paginas/UserCreation";
 import Client from "./paginas/Client";
+import RoutinesPage from "./paginas/Routines";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/users/create" element={<UserCreation />} />
           <Route path="/client/:identification" element={<Client />} />
+          <Route path="/routines" element={<RoutinesPage />} />
         </Routes>
       </BrowserRouter>
     </div>
